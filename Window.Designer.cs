@@ -74,6 +74,7 @@
             sa_Btn.Text = "Block SA";
             sa_Btn.TextAlign = ContentAlignment.MiddleCenter;
             sa_Btn.UseVisualStyleBackColor = false;
+            sa_Btn.CheckedChanged += sa_Btn_CheckedChanged;
             // 
             // eu_Btn
             // 
@@ -92,6 +93,7 @@
             eu_Btn.Text = "Block EU";
             eu_Btn.TextAlign = ContentAlignment.MiddleCenter;
             eu_Btn.UseVisualStyleBackColor = false;
+            eu_Btn.CheckedChanged += eu_Btn_CheckedChanged;
             // 
             // asia_Btn
             // 
@@ -110,6 +112,7 @@
             asia_Btn.Text = "Block Asia";
             asia_Btn.TextAlign = ContentAlignment.MiddleCenter;
             asia_Btn.UseVisualStyleBackColor = false;
+            asia_Btn.CheckedChanged += asia_Btn_CheckedChanged;
             // 
             // oceania_Btn
             // 
@@ -128,6 +131,7 @@
             oceania_Btn.Text = "Block Oceania";
             oceania_Btn.TextAlign = ContentAlignment.MiddleCenter;
             oceania_Btn.UseVisualStyleBackColor = false;
+            oceania_Btn.CheckedChanged += oceania_Btn_CheckedChanged;
             // 
             // info_Text
             // 
@@ -155,6 +159,7 @@
             exit_Btn.TabIndex = 6;
             exit_Btn.Text = "Exit";
             exit_Btn.UseVisualStyleBackColor = false;
+            exit_Btn.Click += exit_Btn_Click;
             // 
             // Window
             // 

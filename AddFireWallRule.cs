@@ -4,6 +4,10 @@ namespace TheOverwatchVPN
 {
     public class AddFireWallRule
     {
+        public AddFireWallRule()
+        {
+            //Initializes
+        }
         public void AddFWRule(IpAdressEntry entry)
         {
             Type? netFwPolicy2Type = Type.GetTypeFromProgID("HNetCfg.FwPolicy2") ?? throw new InvalidOperationException("FWPolicy2 type not found.");
