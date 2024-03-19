@@ -41,7 +41,9 @@ namespace TheOverwatchVPN
         {
             List<IpAdressEntry> entries = new List<IpAdressEntry>();
             string regionFileName = $"{region.ToLower()}.txt";
-            string fileUrl = $"https://raw.githubusercontent.com/BlankTuber/TheOverwatchVPN/main/ipLists/{regionFileName}";
+            string fileUrl = $"https://raw.githubusercontent.com/BlankTuber/TheOverwatchVPN/master/ipLists/{regionFileName}";
+
+            MessageBox.Show(fileUrl, "File URL", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             string fileContent = await httpClient.GetStringAsync(fileUrl);
 

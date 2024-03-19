@@ -25,7 +25,6 @@ namespace TheOverwatchVPN
 
                 // After cleanup, close the form for real
                 e.Cancel = false;
-                this.Close();
             }
         }
 
@@ -35,7 +34,7 @@ namespace TheOverwatchVPN
             // Make sure this logic matches your needs and handles exceptions properly.
             await fireWallManager.DisableRegionRules("na");
             await fireWallManager.DisableRegionRules("sa");
-            await fireWallManager.DisableRegionRules("eu");
+            await fireWallManager.DisableRegionRules("europe");
             await fireWallManager.DisableRegionRules("asia");
             await fireWallManager.DisableRegionRules("oceania");
         }
@@ -92,11 +91,11 @@ namespace TheOverwatchVPN
             {
                 if (checkBox.Checked)
                 {
-                    await fireWallManager.EnableRegionRules("eu");
+                    await fireWallManager.EnableRegionRules("europe");
                 }
                 else
                 {
-                    await fireWallManager.DisableRegionRules("eu");
+                    await fireWallManager.DisableRegionRules("europe");
                 }
             }
         }

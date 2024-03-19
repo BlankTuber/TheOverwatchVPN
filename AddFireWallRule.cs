@@ -19,8 +19,6 @@ namespace TheOverwatchVPN
             newRule.Name = $"Overwatch_BlockIP_{entry.StartIp}";
             newRule.Description = "Automatically blocked this IP. Added by TheOverwatchVPN";
             newRule.Protocol = (int)NET_FW_IP_PROTOCOL_.NET_FW_IP_PROTOCOL_ANY;
-            newRule.LocalPorts = "*";
-            newRule.RemotePorts = "*";
             newRule.Direction = NET_FW_RULE_DIRECTION_.NET_FW_RULE_DIR_OUT;
             newRule.Action = NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
             newRule.Enabled = true;
