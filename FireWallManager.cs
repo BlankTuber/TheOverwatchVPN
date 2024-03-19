@@ -58,7 +58,7 @@ namespace TheOverwatchVPN
             return entries;
         }
 
-        private IpAddressEntry ParseLineToIpAddressEntry(string line)
+        private IpAdressEntry ParseLineToIpAddressEntry(string line)
         {
             // Check if the line is an IP range (e.g., "192.168.1.1-192.168.1.255")
             if (line.Contains('-'))
