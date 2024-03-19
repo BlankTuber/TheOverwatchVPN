@@ -25,6 +25,8 @@ If you prefer to build the application yourself, ensure you have the necessary d
 
 After obtaining `TheOverwatchVPN.exe`, run it by double-clicking the file.
 * There will be a small info box in the middle of the application that tells you how it works.
+  
+- Click the regional buttons at the top of the application to turn on or off firewall rules that block the ips, and click exit to close the application. 
 
 ## Updating IP Lists
 
