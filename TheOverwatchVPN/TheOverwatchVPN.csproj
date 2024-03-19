@@ -6,8 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Resources\overwatch_vpn_logo.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\overwatch_vpn_logo.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <COMReference Include="NetFwTypeLib">
@@ -19,6 +23,14 @@
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\overwatch_vpn_logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\overwatch_vpn_logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
