@@ -1,3 +1,6 @@
+using System.Diagnostics;
+using System.Security.Principal;
+
 namespace TheOverwatchVPN
 {
     internal static class Program
@@ -8,10 +11,24 @@ namespace TheOverwatchVPN
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Window());
+            if (IsAdministrator())
+            {
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Window());
+            }
+            else
+            {
+                MessageBox.Show("Please open with admin. \n\n You do this by rightclicking the application and selecting \"Run with Administrator\"", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Application.Exit();
+            }
+
         }
+        static bool IsAdministrator()
+        {
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+
     }
 }
