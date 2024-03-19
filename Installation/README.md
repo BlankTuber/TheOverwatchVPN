@@ -14,7 +14,8 @@ Before installing TheOverwatchVPN, ensure you have:
 ### Option 1: Download the Executable
 
 1. Go to the [download site](https://quidque.no/theowvpn/TheOverwatchVPN.exe).
-2. Save the file to a convenient location on your computer.
+2. Click "More Info" and then "Run Anyway"
+3. Save the file to a convenient location on your computer.
 
 ### Option 2: Build From Source
 
