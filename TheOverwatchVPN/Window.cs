@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace TheOverwatchVPN
 {
     public partial class Window : Form
@@ -8,14 +10,22 @@ namespace TheOverwatchVPN
             InitializeComponent();
         }
 
+        private bool cleanupInitiated = false;
+
         protected override async void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
 
-            if (!e.Cancel)  // Check if the closing process hasn't been canceled by other means.
+            if (!e.Cancel && !cleanupInitiated)
             {
+                // Signal that cleanup has started
+                cleanupInitiated = true;
+
                 // Prevent new operations from starting
                 exit_Btn.Enabled = false;
+
+                // Minimize the form to give visual feedback that the close process has started
+                this.WindowState = FormWindowState.Minimized;
 
                 // Signal that the form should not close immediately
                 e.Cancel = true;
@@ -23,10 +33,13 @@ namespace TheOverwatchVPN
                 // Perform the cleanup operations asynchronously
                 await DisableAllFirewallRulesAsync();
 
-                // After cleanup, close the form for real
+                // Cleanup is done, allow the form to close
                 e.Cancel = false;
+                this.Close(); // This call will now only happen once after cleanup
             }
         }
+
+
 
         private async Task DisableAllFirewallRulesAsync()
         {
@@ -59,10 +72,12 @@ namespace TheOverwatchVPN
                 if (checkBox.Checked)
                 {
                     await fireWallManager.EnableRegionRules("na");
+                    checkBox.BackColor = Color.Red;
                 }
                 else
                 {
                     await fireWallManager.DisableRegionRules("na");
+                    checkBox.BackColor = Color.LimeGreen;
                 }
             }
         }
@@ -76,10 +91,12 @@ namespace TheOverwatchVPN
                 if (checkBox.Checked)
                 {
                     await fireWallManager.EnableRegionRules("sa");
+                    checkBox.BackColor = Color.Red;
                 }
                 else
                 {
                     await fireWallManager.DisableRegionRules("sa");
+                    checkBox.BackColor = Color.LimeGreen;
                 }
             }
         }
@@ -92,10 +109,12 @@ namespace TheOverwatchVPN
                 if (checkBox.Checked)
                 {
                     await fireWallManager.EnableRegionRules("europe");
+                    checkBox.BackColor = Color.Red;
                 }
                 else
                 {
                     await fireWallManager.DisableRegionRules("europe");
+                    checkBox.BackColor = Color.LimeGreen;
                 }
             }
         }
@@ -108,10 +127,12 @@ namespace TheOverwatchVPN
                 if (checkBox.Checked)
                 {
                     await fireWallManager.EnableRegionRules("asia");
+                    checkBox.BackColor = Color.Red;
                 }
                 else
                 {
                     await fireWallManager.DisableRegionRules("asia");
+                    checkBox.BackColor = Color.LimeGreen;
                 }
             }
         }
@@ -124,10 +145,12 @@ namespace TheOverwatchVPN
                 if (checkBox.Checked)
                 {
                     await fireWallManager.EnableRegionRules("oceania");
+                    checkBox.BackColor = Color.Red;
                 }
                 else
                 {
                     await fireWallManager.DisableRegionRules("oceania");
+                    checkBox.BackColor = Color.LimeGreen;
                 }
             }
         }
@@ -141,6 +164,67 @@ namespace TheOverwatchVPN
             this.Close();
         }
 
+        private void hovereffect(object sender, EventArgs e)
+        {
+            CheckBox? checkBox = sender as CheckBox;
 
+            if (checkBox != null)
+            {
+                if (checkBox.Checked)
+                {
+                    checkBox.BackColor = Color.DarkRed;
+                }
+                else
+                {
+                    checkBox.BackColor = Color.Green;
+                }
+            }
+        }
+
+        private void removehovereffect(object sender, EventArgs e)
+        {
+            CheckBox? checkBox = sender as CheckBox;
+            if (checkBox != null)
+            {
+                if (checkBox.Checked)
+                {
+                    checkBox.BackColor = Color.Red;
+                }
+                else
+                {
+                    checkBox.BackColor = Color.LimeGreen;
+                }
+            }
+        }
+
+        private void grayHover(object sender, EventArgs e)
+        {
+            exit_Btn.BackColor = Color.Black;
+        }
+
+        private void grayLeave(object sender, EventArgs e)
+        {
+            exit_Btn.BackColor = Color.Gray;
+
+        }
+
+        private void goToPage(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                // Use ProcessStartInfo to set up the web link opening
+                var psi = new ProcessStartInfo
+                {
+                    FileName = "https://github.com/BlankTuber/TheOverwatchVPN",
+                    UseShellExecute = true // This is required to specify that an external process, like a browser, should be used
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                // If an error occurs, catch it and display or log it
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
     }
 }

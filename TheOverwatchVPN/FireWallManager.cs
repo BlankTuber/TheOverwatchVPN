@@ -43,8 +43,6 @@ namespace TheOverwatchVPN
             string regionFileName = $"{region.ToLower()}.txt";
             string fileUrl = $"https://raw.githubusercontent.com/BlankTuber/TheOverwatchVPN/master/ipLists/{regionFileName}";
 
-            MessageBox.Show(fileUrl, "File URL", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             string fileContent = await httpClient.GetStringAsync(fileUrl);
 
             var lines = fileContent.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
